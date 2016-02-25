@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="store">
+<html>
 
 <head>
     <title>Main</title>
@@ -7,7 +7,7 @@
     <link href="resources/css/stylesheet.css" rel="stylesheet" />
 </head>
 
-<body>
+<body  ng-app="myApp">
     <div id="sidebar">
         <ul>
             <li>
@@ -19,23 +19,15 @@
             <li>
                 <div class="sidebar-line"></div>
             </li>
-            <li>
-                <img class="sidebar-icon" src="http://lorempixel.com/60/60/business" />
-            </li>
-            <li>
-                <img class="sidebar-icon" src="http://lorempixel.com/60/60/business" />
-                <li>
-                    <img class="sidebar-icon" src="http://lorempixel.com/60/60/business" />
-                </li>
-                <li>
-                    <img class="sidebar-icon" src="http://lorempixel.com/60/60/business" />
-                </li>
-                <li>
-                    <img class="sidebar-icon" src="http://lorempixel.com/60/60/business" />
-                </li>
-                <li>
-                    <img class="sidebar-icon sidebar-create" src="http://lorempixel.com/60/60/abstract" />
-                </li>
+            <div ng-controller="ProjectController as projectCtrl">
+                <ul>
+                    <div ng-repeat="project in projectCrtl.ctrl.projects">
+                        <li>
+                            <img class="img img-responsive" src="http://gimepix.com/img/60-60-urban-001" />
+                        </li>
+                    </div>
+                </ul>
+            </div>
         </ul>
     </div>
 
@@ -57,7 +49,7 @@
             <li>
                 <div class="feature-wrapper">
                     <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
-                    <p class="menu-text">Backlog</p>
+                    <p class="menu-text">Story</p>
                 </div>
             </li>
             <li>
@@ -88,7 +80,7 @@
 
     </div>
     <div id="main-content">
-        <h1 class="project-title">Backlog</h1>
+        <h1 class="project-title">Story</h1>
 
         <div>
             <form action="demo_form.asp">
@@ -104,15 +96,24 @@
         </div>
 
 
-        <div id="backlog-container">
+        <div id="Story-container">
 
         </div>
     </div>
-
-    <script src="resources/javascript/app.js"></script>
-    <script src="resources/javascript/BacklogItem.js"></script>
-    <script src="resources/javascript/BacklogController.js"></script>
     
+    <script type="text/javascript" src="resources/javascript/angular-1.5.0/angular.js"></script>
+    <script type="text/javascript" src="resources/javascript/angular-1.5.0/angular-route.js"></script>
+    <script type="text/javascript" src="resources/javascript/app.js"></script>
+
+    
+    <script type="text/javascript" src="resources/javascript/Story.js"></script>
+    <script type="text/javascript" src="resources/javascript/Project.js"></script>
+    <script type="text/javascript" src="resources/javascript/User.js"></script>
+    
+    <script type="text/javascript" src="resources/javascript/StoryController.js"></script>
+    <script type="text/javascript" src="resources/javascript/ProjectController.js"></script>
+    
+
 </body>
 
 </html>

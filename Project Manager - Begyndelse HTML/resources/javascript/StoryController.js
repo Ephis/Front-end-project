@@ -1,24 +1,19 @@
 var StoryController = function () {
     var self = this;
 
-    self.stories = [new Story(1, "ToDo", 2, 10, "Nicolai", "Marck"), new Story(2, "ToDo", 4, 8, "Marck", "Marck"), new Story(3, "ToDo", 5, 6, "Nicolai", "Nicolai"), new Story(4, "ToDo", 5, 9, "Marck", "Nicolai"), new Story(5, "ToDo", 7, 1, "Nicolai", "Alle")];
+    self.stories = stories;
 
     self.addStory = function (story) {
         self.stories.push(story);
     };
 
-    self.printStories = function () {
-        var html = "";
-        for (i = 0; i < self.stories.length; i++) {
-            var item = self.stories[i];
-            html = html + '<div ' + 'class="story-item-margin"> <div class="story-item-padding"><p class="sidebar-text">' + item.name + '</p><p>Estimat: ' + item.estimat + '</p><p>Creator: ' + item.creator + '</p> </div> </div>';
-        }
-        document.getElementById("story-container").innerHTML = html;
-    };
+
 
 }
 
-window.onload = function() {
-    var storyCtrl = new StoryController();
-    storyCtrl.printStories();
-}
+var user1 = new User(1, "KyhmeBiatchs", "Marck Jensen", "", "Jeg hedder Marck og er 10 år", []);
+var user2 = new User(2, "Ephixs", "Nicolai Rasmussen", "", "Marck er min ven", []);
+
+var project = new Project(1,"Project 1",[],user1,"",[]);
+
+var stories = [new Story(1, "Vask Op", "Vask alt opvask op", 2, 10, user1, "", 0, project, []), new Story(2, "Støvsug", "Støvsug over alt", 4, 8, user2, "", 0, project, []), new Story(3, "Støv af", "Støv alt af", 1, 4, user1, "", 0, project, [])];
