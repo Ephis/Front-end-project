@@ -1,5 +1,5 @@
-(var Task = function(){
-    this.Id = Id;
+(var Task = function(id, name, description, estimate, status, responseable, Story){
+    this.id = id;
     this.name = name;
     this.description = description;
     this.estimate = estimate;
