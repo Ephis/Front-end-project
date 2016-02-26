@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Security.AccessControl;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -23,7 +24,10 @@ namespace ProjectManager.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-        }
+            
+       }
+
+        public DbSet<Taskmodel> Tasks { get; set; }
 
         public static ApplicationDbContext Create()
         {
