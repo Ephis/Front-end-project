@@ -1,7 +1,10 @@
-var Project = function(id,image, name, userList, creator, settings){
+var Project = function(id, name, memberList, creator, pictureUrl, storyList){
     this.id = id;
-    this.image = image;
     this.name = name;
-    this.userList = userList;
+    this.memberList = memberList;
     this.creator = creator;
+    this.pictureUrl = pictureUrl;
+    this.storyList = storyList;
+    
+    this.createdAt = Date.now();
 };

@@ -140,7 +140,7 @@ ul {
     margin-top: 66px;
 }
 
-.backlog-item-margin {
+.story-item-margin {
     float: left;
     margin-top: 20px;
     margin-left: 2%;
@@ -148,6 +148,6 @@ ul {
     background-color: brown; 
 }
 
-.backlog-item-padding {
+.story-item-padding {
     padding: 10px;
 }
