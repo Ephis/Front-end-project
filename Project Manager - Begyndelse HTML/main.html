@@ -21,8 +21,8 @@
             </li>
             <div >
                 <ul>
-                    <div>
-                        <li>
+                    <div ng-controller="ProjectController as projectCtrl">
+                        <li ng-repeat="project in projectCtrl.projects">
                             <img class="img img-responsive" src="http://gimepix.com/img/60-60-urban-001" />
                         </li>
                     </div>
