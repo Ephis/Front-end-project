@@ -3,10 +3,35 @@ var app = angular.module('myApp');
 app.controller('ProjectController', function () {
     var self = this; 
     self.projects = Projects;
+    self.project = null;
+    self.menuShown = false;
     
-    self.addProject = new function(project){
+    self.addProject = function(project){
         self.projects.push(project);
     };
+    
+    self.projectIconClicked = function(project){
+        if(self.isProjectShown(project)){
+            self.hideProject();
+        }else{
+            self.showProject(project);
+        }
+    };
+    
+    self.showProject = function(project){
+        self.project = project;
+        self.menuShown = true;
+    };
+    
+    self.isProjectShown = function(project){
+        return self.project === project && self.menuShown === true;
+    };
+    
+    self.hideProject = function(){
+        self.menuShown = false;
+    };
+    
+    
 });
 
 

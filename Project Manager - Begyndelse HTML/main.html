@@ -7,12 +7,12 @@
     <link href="resources/css/stylesheet.css" rel="stylesheet" />
 </head>
 
-<body  ng-app="myApp">
+<body  ng-app="myApp" ng-controller="ProjectController as projectCtrl">
     <div id="sidebar">
         <ul>
             <li>
                 <div class="sidebar-account">
-                    <img class="sidebar-logo" src="http://lorempixel.com/400/200/technics" />
+                    <img class="sidebar-logo" src="https://s3.amazonaws.com/uifaces/faces/twitter/jbrooksuk/73.jpg" />
                     <p class="sidebar-text">Account</p>
                 </div>
             </li>
@@ -21,9 +21,11 @@
             </li>
             <div >
                 <ul>
-                    <div ng-controller="ProjectController as projectCtrl">
+                    <div>
                         <li ng-repeat="project in projectCtrl.projects">
-                            <img class="sidebar-icon" src="http://gimepix.com/img/60-60-urban-001" />
+                            <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" 
+                            ng-class="{ 'selected-border': projectCtrl.isProjectShown(project)}"
+                            ng-click="projectCtrl.projectIconClicked(project)" />
                         </li>
                     </div>
                 </ul>
@@ -31,8 +33,8 @@
         </ul>
     </div>
 
-    <div id="sidebar-content">
-        <h1 class="project-title">Project Manager</h1>
+    <div id="sidebar-content" ng-show="projectCtrl.menuShown">
+        <h1 class="project-title">{{projectCtrl.project.name}}</h1>
         <ul>
             <li>
                 <div class="feature-wrapper">
@@ -79,7 +81,7 @@
         </ul>
 
     </div>
-    <div id="main-content">
+    <div class="main-content" ng-class="{ 'menu-hidden': projectCtrl.menuShown === false}">
         <h1 class="project-title">Story</h1>
 
         <div>
