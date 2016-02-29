@@ -49,14 +49,13 @@ ul {
     bottom: 0;
     right: 0;
     left: 0;
-    
 }
 
 .main-content {
     position: absolute;
     height: 100%;
-    width: 100% - 420px;
-    margin-left: 420px;
+    width: 100% - 422px;
+    margin-left: 422px;
     background-color: blueviolet;
     top: 0;
     bottom: 0;
@@ -160,4 +159,7 @@ ul {
 .selected-border {
     border: 5px solid black;
     border-radius: 5px;
+    margin-top: 19px;
+    margin-bottom: -5px;
+    margin-left: 7px;
 }
