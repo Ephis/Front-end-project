@@ -31,7 +31,6 @@ app.controller('ProjectController', function () {
         self.menuShown = false;
     };
     
-    
 });
 
 
