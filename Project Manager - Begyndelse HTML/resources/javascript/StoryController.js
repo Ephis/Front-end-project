@@ -1,4 +1,6 @@
-var StoryController = function () {
+var app = angular.module('myApp');
+
+app.controller('StoryController', function () {
     var self = this;
 
     self.stories = stories;
@@ -6,10 +8,8 @@ var StoryController = function () {
     self.addStory = function (story) {
         self.stories.push(story);
     };
-
-
-
-}
+    
+});
 
 var user1 = new User(1, "KyhmeBiatchs", "Marck Jensen", "", "Jeg hedder Marck og er 10 år", []);
 var user2 = new User(2, "Ephixs", "Nicolai Rasmussen", "", "Marck er min ven", []);

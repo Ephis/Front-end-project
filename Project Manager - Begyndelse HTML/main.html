@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
 </head>
 
-<body  ng-app="myApp" ng-controller="ProjectController as projectCtrl">
+<body ng-app="myApp" ng-controller="ProjectController as projectCtrl">
     <div id="sidebar">
         <ul>
             <li>
@@ -20,13 +20,11 @@
             <li>
                 <div class="sidebar-line"></div>
             </li>
-            <div >
+            <div>
                 <ul>
                     <div>
                         <li ng-repeat="project in projectCtrl.projects">
-                            <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" 
-                            ng-class="{ 'selected-border': projectCtrl.isProjectShown(project)}"
-                            ng-click="projectCtrl.projectIconClicked(project)" />
+                            <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" ng-class="{ 'selected-border': projectCtrl.isProjectShown(project)}" ng-click="projectCtrl.projectIconClicked(project)" />
                         </li>
                     </div>
                 </ul>
@@ -38,10 +36,12 @@
         <h1 class="project-title">{{projectCtrl.project.name}}</h1>
         <ul>
             <li>
-                <div class="feature-wrapper">
-                    <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
-                    <p class="menu-text">Wall</p>
-                </div>
+                <a style="display:block" href="#wall/{{projectCtrl.project.id}}">
+                    <div class="feature-wrapper">
+                        <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                        <p class="menu-text">Wall</p>
+                    </div>
+                </a>
             </li>
             <li>
                 <div class="feature-wrapper">
@@ -50,16 +50,20 @@
                 </div>
             </li>
             <li>
-                <div class="feature-wrapper">
-                    <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
-                    <p class="menu-text">Story</p>
-                </div>
+                <a style="display:block" href="#story">
+                    <div class="feature-wrapper">
+                        <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                        <p class="menu-text">Story</p>
+                    </div>
+                </a>
             </li>
             <li>
-                <div class="feature-wrapper">
-                    <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
-                    <p class="menu-text">Taskboard</p>
-                </div>
+                <a style="display:block" href="#taskboard">
+                    <div class="feature-wrapper">
+                        <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                        <p class="menu-text">Taskboard</p>
+                    </div>
+                </a>
             </li>
             <li>
                 <div class="feature-wrapper">
@@ -83,39 +87,24 @@
 
     </div>
     <div class="main-content" ng-class="{ 'menu-hidden': projectCtrl.menuShown === false}">
-        <h1 class="project-title">Story</h1>
-
-        <div>
-            <form action="demo_form.asp">
-                Task:
-                <input type="text" name="taskName">
-                <br> Estimate:
-                <input type="number" name="estimate">
-                <br> Priority:
-                <input type="number" name="priority">
-                <br>
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-
-
-        <div id="Story-container">
-
-        </div>
+        <ng-view>
+        </ng-view>
     </div>
-    
+
     <script type="text/javascript" src="resources/javascript/angular-1.5.0/angular.js"></script>
     <script type="text/javascript" src="resources/javascript/angular-1.5.0/angular-route.js"></script>
     <script type="text/javascript" src="resources/javascript/app.js"></script>
 
-    
+
     <script type="text/javascript" src="resources/javascript/Story.js"></script>
     <script type="text/javascript" src="resources/javascript/Project.js"></script>
     <script type="text/javascript" src="resources/javascript/User.js"></script>
-    
+    <script type="text/javascript" src="resources/javascript/Task.js"></script>
+
     <script type="text/javascript" src="resources/javascript/StoryController.js"></script>
     <script type="text/javascript" src="resources/javascript/ProjectController.js"></script>
-    
+    <script type="text/javascript" src="resources/javascript/WallController.js"></script>
+    <script type="text/javascript" src="resources/javascript/TaskboardController.js"></script>
 
 </body>
 
