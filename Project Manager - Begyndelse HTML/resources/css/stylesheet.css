@@ -164,3 +164,7 @@ ul {
     margin-bottom: -5px;
     margin-left: 7px;
 }
+.deck-wrapper-padding{
+    padding-left: 20px;
+    padding-right: 20px;
+}
