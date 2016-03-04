@@ -3,17 +3,12 @@
 
 <head>
     <title>Main</title>
-    
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    
     <link href="resources/css/stylesheet.css" rel="stylesheet" />
-    <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-
 </head>
 
-<body ng-app="myApp" ng-controller="ProjectController as projectCtrl">
+<body ng-app="myApp" ng-controller="MenuController as menuCtrl">
     <div id="sidebar">
         <ul>
             <li>
@@ -25,13 +20,11 @@
             <li>
                 <div class="sidebar-line"></div>
             </li>
-            <div>
+            <div ng-controller="ProjectController as projectCtrl">
                 <ul>
                     <div>
                         <li ng-repeat="project in projectCtrl.projects">
-                            <a href="" style="display:block" ng-click="projectCtrl.projectIconClicked(project)">
-                                <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" ng-class="{ 'selected-border': projectCtrl.isProjectShown(project)}" />
-                            </a>
+                            <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" ng-class="{ 'selected-border': menuCtrl.isProjectShown(project)}" ng-click="menuCtrl.projectIconClicked(project)" />
                         </li>
                     </div>
                 </ul>
@@ -39,16 +32,16 @@
         </ul>
     </div>
 
-    <div id="sidebar-content" ng-show="projectCtrl.menuShown">
-        <h1 class="project-title">{{projectCtrl.project.name}}</h1>
+    <div id="sidebar-content" ng-show="menuCtrl.menuShown">
+        <h1 class="project-title">{{menuCtrl.project.name}}</h1>
         <ul>
             <li>
-                <div class="feature-wrapper">
-                    <a style="display:block" href="#wall/{{projectCtrl.project.id}}">
+                <a style="display:block" href="#wall/{{menuCtrl.project.id}}">
+                    <div class="feature-wrapper">
                         <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
                         <p class="menu-text">Wall</p>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </li>
             <li>
                 <div class="feature-wrapper">
@@ -57,20 +50,20 @@
                 </div>
             </li>
             <li>
-                <div class="feature-wrapper">
-                    <a style="display:block" href="#story/{{projectCtrl.project.id}}">
+                <a style="display:block" href="#story/{{menuCtrl.project.id}}">
+                    <div class="feature-wrapper">
                         <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
                         <p class="menu-text">Story</p>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </li>
             <li>
-                <div class="feature-wrapper">
-                    <a style="display:block" href="#taskboard/{{projectCtrl.project.id}}">
+                <a style="display:block" href="#taskboard/{{menuCtrl.project.id}}">
+                    <div class="feature-wrapper">
                         <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
                         <p class="menu-text">Taskboard</p>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </li>
             <li>
                 <div class="feature-wrapper">
@@ -93,7 +86,7 @@
         </ul>
 
     </div>
-    <div class="main-content" ng-class="{ 'menu-hidden': projectCtrl.menuShown === false}">
+    <div class="main-content" ng-class="{ 'menu-hidden': menuCtrl.menuShown === false}">
         <ng-view>
         </ng-view>
     </div>
@@ -106,12 +99,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 
 
-
     <script type="text/javascript" src="resources/javascript/Story.js"></script>
     <script type="text/javascript" src="resources/javascript/Project.js"></script>
     <script type="text/javascript" src="resources/javascript/User.js"></script>
     <script type="text/javascript" src="resources/javascript/Task.js"></script>
 
+    <script type="text/javascript" src="resources/javascript/MenuController.js"></script>
     <script type="text/javascript" src="resources/javascript/StoryController.js"></script>
     <script type="text/javascript" src="resources/javascript/ProjectController.js"></script>
     <script type="text/javascript" src="resources/javascript/WallController.js"></script>
