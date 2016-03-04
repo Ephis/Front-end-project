@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
 </head>
 
-<body ng-app="myApp" ng-controller="ProjectController as projectCtrl">
+<body ng-app="myApp" ng-controller="MenuController as menuCtrl">
     <div id="sidebar">
         <ul>
             <li>
@@ -20,11 +20,11 @@
             <li>
                 <div class="sidebar-line"></div>
             </li>
-            <div>
+            <div ng-controller="ProjectController as projectCtrl">
                 <ul>
                     <div>
                         <li ng-repeat="project in projectCtrl.projects">
-                            <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" ng-class="{ 'selected-border': projectCtrl.isProjectShown(project)}" ng-click="projectCtrl.projectIconClicked(project)" />
+                            <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" ng-class="{ 'selected-border': menuCtrl.isProjectShown(project)}" ng-click="menuCtrl.projectIconClicked(project)" />
                         </li>
                     </div>
                 </ul>
@@ -32,11 +32,11 @@
         </ul>
     </div>
 
-    <div id="sidebar-content" ng-show="projectCtrl.menuShown">
-        <h1 class="project-title">{{projectCtrl.project.name}}</h1>
+    <div id="sidebar-content" ng-show="menuCtrl.menuShown">
+        <h1 class="project-title">{{menuCtrl.project.name}}</h1>
         <ul>
             <li>
-                <a style="display:block" href="#wall/{{projectCtrl.project.id}}">
+                <a style="display:block" href="#wall/{{menuCtrl.project.id}}">
                     <div class="feature-wrapper">
                         <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
                         <p class="menu-text">Wall</p>
@@ -50,7 +50,7 @@
                 </div>
             </li>
             <li>
-                <a style="display:block" href="#story/{{projectCtrl.project.id}}">
+                <a style="display:block" href="#story/{{menuCtrl.project.id}}">
                     <div class="feature-wrapper">
                         <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
                         <p class="menu-text">Story</p>
@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li>
-                <a style="display:block" href="#taskboard/{{projectCtrl.project.id}}">
+                <a style="display:block" href="#taskboard/{{menuCtrl.project.id}}">
                     <div class="feature-wrapper">
                         <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
                         <p class="menu-text">Taskboard</p>
@@ -86,7 +86,7 @@
         </ul>
 
     </div>
-    <div class="main-content" ng-class="{ 'menu-hidden': projectCtrl.menuShown === false}">
+    <div class="main-content" ng-class="{ 'menu-hidden': menuCtrl.menuShown === false}">
         <ng-view>
         </ng-view>
     </div>
@@ -101,6 +101,7 @@
     <script type="text/javascript" src="resources/javascript/User.js"></script>
     <script type="text/javascript" src="resources/javascript/Task.js"></script>
 
+    <script type="text/javascript" src="resources/javascript/MenuController.js"></script>
     <script type="text/javascript" src="resources/javascript/StoryController.js"></script>
     <script type="text/javascript" src="resources/javascript/ProjectController.js"></script>
     <script type="text/javascript" src="resources/javascript/WallController.js"></script>
