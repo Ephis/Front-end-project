@@ -4,6 +4,12 @@
         <div class="card-deck deck-wrapper-padding">
             <div class="card">
                 <h4 class="card-header">ToDo</h4>
+                <ul class="list-group list-group-flush">
+                    <li ng-repeat="task in taskCtrl.tasks">
+                        <h6>{{task.name}}</h6>
+                    </li>
+                    
+                </ul>
             </div>
             <div class="card">
                 <h4 class="card-header">In Progress</h4>
