@@ -1,4 +1,7 @@
+<header>
 <h1 class="project-title">Taskboard Site: {{menuCtrl.project.name}}</h1>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#taskModal">Open Modal</button>
+</header>
 <div>
     <div class="card-deck-wrapper">
         <div class="card-deck deck-wrapper-padding">
@@ -8,7 +11,6 @@
                     <li ng-repeat="task in taskCtrl.tasks">
                         <h6>{{task.name}}</h6>
                     </li>
-                    
                 </ul>
             </div>
             <div class="card">
@@ -19,6 +21,24 @@
             </div>
             <div class="card">
                 <h4 class="card-header">DONE!</h4>
+            </div>
+
+            <!-- Makin modal for task -->
+            <div id="taskModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal for task</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>INFO</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
