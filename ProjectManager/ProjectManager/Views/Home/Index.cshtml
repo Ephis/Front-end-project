@@ -1,31 +1,115 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!doctype html>
+<html>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<head>
+    <title>Main</title>
+    <meta charset="utf-8" />
+    <link href="~/app/assests/css/stylesheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+</head>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<body ng-app="myApp" ng-controller="MenuController as menuCtrl">
+    <div id="sidebar">
+        <ul>
+            <li>
+                <div class="sidebar-account">
+                    <img class="sidebar-logo" src="https://s3.amazonaws.com/uifaces/faces/twitter/jbrooksuk/73.jpg" />
+                    <p class="sidebar-text">Account</p>
+                </div>
+            </li>
+            <li>
+                <div class="sidebar-line"></div>
+            </li>
+            <div ng-controller="ProjectController as projectCtrl">
+                <ul>
+                    <div>
+                        <li ng-repeat="project in projectCtrl.projects">
+                            <img class="sidebar-icon" src="https://s3.amazonaws.com/uifaces/faces/twitter/seanom/73.jpg" ng-class="{ 'selected-border': menuCtrl.isProjectShown(project)}" ng-click="menuCtrl.projectIconClicked(project)" />
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </ul>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div id="sidebar-content" ng-show="menuCtrl.menuShown">
+        <h1 class="project-title">{{menuCtrl.project.name}}</h1>
+        <ul>
+            <li>
+                <a style="display:block" href="#wall/{{menuCtrl.project.id}}">
+                    <div class="feature-wrapper">
+                        <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                        <p class="menu-text">Wall</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="feature-wrapper">
+                    <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                    <p class="menu-text">Summary</p>
+                </div>
+            </li>
+            <li>
+                <a style="display:block" href="#story/{{menuCtrl.project.id}}">
+                    <div class="feature-wrapper">
+                        <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                        <p class="menu-text">Story</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a style="display:block" href="#taskboard/{{menuCtrl.project.id}}">
+                    <div class="feature-wrapper">
+                        <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                        <p class="menu-text">Taskboard</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="feature-wrapper">
+                    <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                    <p class="menu-text">Calender</p>
+                </div>
+            </li>
+            <li>
+                <div class="feature-wrapper">
+                    <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                    <p class="menu-text">Files</p>
+                </div>
+            </li>
+            <li>
+                <div class="feature-wrapper">
+                    <img class="sidebar-icon menu-icon" src="http://lorempixel.com/60/60/nature" />
+                    <p class="menu-text">Settings</p>
+                </div>
+            </li>
+        </ul>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="main-content" ng-class="{ 'menu-hidden': menuCtrl.menuShown === false}">
+        <ng-view>
+        </ng-view>
     </div>
-</div>
+
+    <script type="text/javascript" src="~/Scripts/angular.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-route.min.js"></script>
+    <script type="text/javascript" src="~/App/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript" src="~/App/Components/Story/Story.js"></script>
+    <script type="text/javascript" src="~/App/Components/Project/Project.js"></script>
+    <script type="text/javascript" src="~/App/Components/User/User.js"></script>
+    <script type="text/javascript" src="~/App/Components/Task/Task.js"></script>
+
+    <script type="text/javascript" src="~/App/Components/Menu/MenuController.js"></script>
+    <script type="text/javascript" src="~/App/Components/Story/StoryController.js"></script>
+    <script type="text/javascript" src="~/App/Components/Project/ProjectController.js"></script>
+    <script type="text/javascript" src="~/App/Components/Wall/WallController.js"></script>
+    <script type="text/javascript" src="~/App/Components/Task/TaskboardController.js"></script>
+
+</body>
+
+</html>
