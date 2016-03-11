@@ -20,13 +20,8 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-        <!-- Modal-->
-        <div class="modal fade bd-example-modal-lg" id="myModal" role="dialog" ng-controller="StoryController as storyCtrl">
-=======
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog" ng-controller="StoryController as storyCtrl">
->>>>>>> 916547d20c5212daf8a7157dce85c204f913a094
             <div class="modal-dialog modal-lg">
 
                 <!-- Modal content-->
@@ -64,7 +59,7 @@
                                         <div class="sidebar-line-grey"></div>
                                         <ul>
                                             <li ng-repeat="task in storyCtrl.tasksToAdd">{{task.name}}</li>
-                                            <input type="text" class="form-control" ng-model="task.name" placeholder="Task to add" ng-keypress="handleKeyPress($event)"/>
+                                            <li><input type="text" class="form-control" ng-model="task.name" placeholder="Task to add" ng-keypress="handleKeyPress($event)" /></li>
                                         </ul>
                                     </div>
                                 </div>
