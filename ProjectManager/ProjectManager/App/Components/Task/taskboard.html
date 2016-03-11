@@ -6,12 +6,13 @@
     <div class="container" style="padding-top:30px">
         <div class="card-deck-wrapper">
             <div class="card-deck deck-wrapper-padding">
-                <div class="card" ng-repeat="task in taskCtrl.tasks">
+                <div class="card" style="padding-bottom:50px">
                     <div class="card-header">
                         <h4>ToDo</h4>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{task.name}}</li>
+                        <li class="list-group-item" ng-repeat="task in taskCtrl.tasks">{{task.name}}</li>
+                        <li></li>
                     </ul>
                 </div>
                 <div class="card">
