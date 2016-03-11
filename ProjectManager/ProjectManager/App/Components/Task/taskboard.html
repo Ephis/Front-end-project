@@ -1,42 +1,55 @@
 <header>
-<h1 class="project-title">Taskboard Site: {{menuCtrl.project.name}}</h1>
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#taskModal">Open Modal</button>
+    <h1 class="project-title">Taskboard Site: {{menuCtrl.project.name}}</h1>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#taskModal">Create Task</button>
 </header>
 <div>
-    <div class="card-deck-wrapper">
-        <div class="card-deck deck-wrapper-padding">
-            <div class="card">
-                <h4 class="card-header">ToDo</h4>
-                <ul class="list-group list-group-flush">
-                    <li ng-repeat="task in taskCtrl.tasks">
-                        <h6>{{task.name}}</h6>
-                    </li>
-                </ul>
+    <div class="container" style="padding-top:30px">
+        <div class="card-deck-wrapper">
+            <div class="card-deck deck-wrapper-padding">
+                <div class="card" ng-repeat="task in taskCtrl.tasks">
+                    <div class="card-header">
+                        <h4>ToDo</h4>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{task.name}}</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4 class="card-header">In Progress</h4>
+                </div>
+                <div class="card">
+                    <h4 class="card-header">Review</h4>
+                </div>
+                <div class="card">
+                    <h4 class="card-header">DONE!</h4>
+                </div>
             </div>
-            <div class="card">
-                <h4 class="card-header">In Progress</h4>
-            </div>
-            <div class="card">
-                <h4 class="card-header">Review</h4>
-            </div>
-            <div class="card">
-                <h4 class="card-header">DONE!</h4>
-            </div>
-
-            <!-- Makin modal for task -->
-            <div id="taskModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal for task</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>INFO</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+        </div>
+        <!-- Makin modal for task! hvad er bd-example-modal-lg -->
+        <div class="modal fade" id="taskModal" role="dialog">
+            <!--Hvad er det her modal-lg-->
+            <div class="modal-dialog modal-lg">
+                <!--Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal for task</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--Form start-->
+                        <form novalidate class="css-form">
+                            <div class="form-group">
+                                <!--Modal-->
+                                <div class="modal-fir-column">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" maxlength="30" ng-model="" />
+                                </div>
+                            </div>
+                        </form>
+                        <p>INFO</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
