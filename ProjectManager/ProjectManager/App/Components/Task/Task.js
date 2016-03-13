@@ -1,4 +1,4 @@
-var Task = function(id, name, description, estimate, status, responseable, Story){
+var Task = function(id, name, description, estimate, status, responseable, Story, message){
     this.id = id;
     this.name = name;
     this.description = description;
@@ -7,4 +7,5 @@ var Task = function(id, name, description, estimate, status, responseable, Story
     this.responseable = responseable;
     this.Story = Story;
     this.createdAt = Date.now();
+    this.message = message;
 };

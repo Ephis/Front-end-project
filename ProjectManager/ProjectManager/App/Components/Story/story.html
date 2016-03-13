@@ -34,12 +34,15 @@
                     </div>
                     <div class="modal-body">
                         <!-- form start-->
-                        <form novalidate class="css-form">
+                        <form class="css-form" name="storyForm" ng-submit="storyForm.$valid && storyCtrl.addStory(stories)" required>
                             <div class="form-group">
                                 <!-- Modal right side-->
                                 <div class="modal-first-column">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" max-lenght="30" ng-model="story.name" placeholder="Story name" required/>
+                                    <input type="text" class="form-control" name="storyName" max-lenght="30" ng-model="story.name" placeholder="Story name" required/>
+                                    <div ng-messages="storyForm.storyName.$error">
+                                        <div ng-message="required">Du mangler at udfylde</div>
+                                    </div>
                                     <br/>
                                     <label>Description</label>
                                     <input type="text" class="form-control" ng-model="story.description" placeholder="Description" />
