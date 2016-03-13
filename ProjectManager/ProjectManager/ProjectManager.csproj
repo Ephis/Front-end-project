@@ -189,6 +189,8 @@
     <Content Include="App\Components\Menu\MenuController.js" />
     <Content Include="App\Components\Project\Project.js" />
     <Content Include="App\Components\Project\ProjectController.js" />
+    <Content Include="App\Components\Project\ProjectCreateModal.html" />
+    <Content Include="App\Components\Project\ProjectDirectives.js" />
     <Content Include="App\Components\Story\story.html" />
     <Content Include="App\Components\Story\Story.js" />
     <Content Include="App\Components\Story\StoryController.js" />
