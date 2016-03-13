@@ -6,12 +6,13 @@
     <div class="container" style="padding-top:30px">
         <div class="card-deck-wrapper">
             <div class="card-deck deck-wrapper-padding">
-                <div class="card" ng-repeat="task in taskCtrl.tasks">
+                <div class="card" style="padding-bottom:50px">
                     <div class="card-header">
                         <h4>ToDo</h4>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{task.name}}</li>
+                        <li class="list-group-item" ng-repeat="task in taskCtrl.tasks">{{task.name}}</li>
+                        <li></li>
                     </ul>
                 </div>
                 <div class="card">
@@ -37,12 +38,15 @@
                     </div>
                     <div class="modal-body">
                         <!--Form start-->
-                        <form novalidate class="css-form">
+                        <form class="css-form" name="taskForm" required>
                             <div class="form-group">
                                 <!--Modal-->
                                 <div>
                                     <label>Name</label>
-                                    <input type="text" class="form-control" maxlength="30" ng-model="task.name" placeholder="Task name" required/>
+                                    <input type="text" class="form-control" name="taskName" maxlength="30" ng-model="task.name" placeholder="Task name" required/>
+                                    <div ng-messages="taskForm.taskName.$error">
+                                        <div ng-message="required">Du mangler at udfylde</div>
+                                    </div>
                                     <label>Description</label>
                                     <input type="text" class="form-control" ng-model="task.description" placeholder="Task description"/>
                                     <label>Estimat</label>
@@ -51,8 +55,10 @@
                                     <input type="number" class="form-control" min="1" max="10" ng-model="task.priority" placeholder="Priority" />
                                     <label>Actual Time</label>
                                     <input type="number" class="form-control" min="1" max="100" ng-model="task.actualTime" placeholder="Actual Time" />
+                                    <label>User Message:</label>
+                                    <textarea type="text", name="taskMessage" ng-model="task.message" required></textarea>
 
-                                
+                                    <!--Dropdown for stories-->
                                     <select ng-model="task.story" ng-options="story.name for story in stories"></select>
                                
                                 </div>
