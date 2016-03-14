@@ -28,10 +28,13 @@ namespace ProjectManager.Models
        }
 
         public DbSet<Taskmodel> Tasks { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Story> Stories { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+        
     }
 }
