@@ -13,46 +13,44 @@ using ProjectManager.Models;
 
 namespace ProjectManager.Controllers
 {
-    public class ProjectsController : ApiController
+    public class StoriesController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Projects
-        [Route("api/projects")]
-        [HttpGet]
-        public IQueryable<Project> GetProjects()
+        // GET: api/Stories
+        public IQueryable<Story> GetStories()
         {
-            return db.Projects;
+            return db.Stories;
         }
 
-        // GET: api/Projects/5
-        [ResponseType(typeof(Project))]
-        public async Task<IHttpActionResult> GetProject(int id)
+        // GET: api/Stories/5
+        [ResponseType(typeof(Story))]
+        public async Task<IHttpActionResult> GetStory(int id)
         {
-            Project project = await db.Projects.FindAsync(id);
-            if (project == null)
+            Story story = await db.Stories.FindAsync(id);
+            if (story == null)
             {
                 return NotFound();
             }
 
-            return Ok(project);
+            return Ok(story);
         }
 
-        // PUT: api/Projects/5
+        // PUT: api/Stories/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProject(int id, Project project)
+        public async Task<IHttpActionResult> PutStory(int id, Story story)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != project.id)
+            if (id != story.id)
             {
                 return BadRequest();
             }
 
-            db.Entry(project).State = EntityState.Modified;
+            db.Entry(story).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace ProjectManager.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProjectExists(id))
+                if (!StoryExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +71,35 @@ namespace ProjectManager.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Projects
-        [ResponseType(typeof(Project))]
-        public async Task<IHttpActionResult> PostProject(Project project)
+        // POST: api/Stories
+        [ResponseType(typeof(Story))]
+        public async Task<IHttpActionResult> PostStory(Story story)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-
-
-            db.Projects.Add(project);
+            db.Stories.Add(story);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = project.id }, project);
+            return CreatedAtRoute("DefaultApi", new { id = story.id }, story);
         }
 
-        // DELETE: api/Projects/5
-        [ResponseType(typeof(Project))]
-        public async Task<IHttpActionResult> DeleteProject(int id)
+        // DELETE: api/Stories/5
+        [ResponseType(typeof(Story))]
+        public async Task<IHttpActionResult> DeleteStory(int id)
         {
-            Project project = await db.Projects.FindAsync(id);
-            if (project == null)
+            Story story = await db.Stories.FindAsync(id);
+            if (story == null)
             {
                 return NotFound();
             }
 
-            db.Projects.Remove(project);
+            db.Stories.Remove(story);
             await db.SaveChangesAsync();
 
-            return Ok(project);
+            return Ok(story);
         }
 
         protected override void Dispose(bool disposing)
@@ -115,9 +111,9 @@ namespace ProjectManager.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProjectExists(int id)
+        private bool StoryExists(int id)
         {
-            return db.Projects.Count(e => e.id == id) > 0;
+            return db.Stories.Count(e => e.id == id) > 0;
         }
     }
 }

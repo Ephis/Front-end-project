@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using System.Web.Http;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(ProjectManager.Startup))]
@@ -8,7 +9,11 @@ namespace ProjectManager
     {
         public void Configuration(IAppBuilder app)
         {
+            HttpConfiguration config = new HttpConfiguration();
             ConfigureAuth(app);
+
+            WebApiConfig.Register(config);
+            app.UseWebApi(config);
         }
     }
 }

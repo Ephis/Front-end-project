@@ -22,5 +22,20 @@ namespace ProjectManager.Models
             
         }
 
+        public void addStory(Story story)
+        {
+            stories.Add(story);
+        }
+
+        public void addSprints(Sprint sprint)
+        {
+            sprints.Add(sprint);
+        }
+
+        public void addMember(User user)
+        {
+            menberList.Add(user);
+        }
+
     }
 }
