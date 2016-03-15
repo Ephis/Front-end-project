@@ -26,86 +26,35 @@ namespace ProjectManager.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-//            Story story1 = new Story()
-//            {
-//                id = 1,
-//                name = "Make baby cry",
-//                priority = 10,
-//                description = "make baby cry hard, for days!",
-//                isDone = false,
-//                actualTime = 0,
-//                createdAt = new DateTime(),
-//                creator = null,
-//                estimat = 5,
-//                project = null
-//
-//            };
-//
-//            Story story2 = new Story()
-//            {
-//                id = 2, 
-//                name = "Pass exam",
-//                priority = 8,
-//                description = "And nail it!",
-//                isDone = false,
-//                actualTime = 0,
-//                createdAt = new DateTime(),
-//                creator = null,
-//                estimat = 10,
-//                project = null
-//            };
-//
-//            Taskmodel task1 = new Taskmodel()
-//            {
-//                id = 1,
-//                name = "Do something",
-//                estimate = 2,
-//                priority = 2,
-//                status = 1,
-//                description = "Hallo",
-//                story = story1,
-//                createdAt = new DateTime(),
-//                responseable = null
-//
-//            };
-//
-//            Taskmodel task2 = new Taskmodel()
-//            {
-//                id = 2, 
-//                name = "Write code",
-//                estimate = 5, 
-//                priority = 3,
-//                status = 2,
-//                description = "Make all the code",
-//                story = story2,
-//                createdAt = new DateTime(),
-//                responseable = null
-//
-//            };
-//
-//            Project project = new Project()
-//            {
-//                id = 1,
-//                name = "tryhards",
-//                description = "We are the tryhard team",
-//                createdAt = new DateTime(),
-//                creator = null,
-//                menberList = new List<User>(),
-//                pictureUrl = "",
-//                sprints = new List<Sprint>(),
-//                stories = new List<Story>()
-//
-//            };
-//
-//            story1.addTask(task1);
-//            story1.project = project;
-//            story2.addTask(task2);
-//            story2.project = project;
-//
-//            project.addStory(story1);
-//            project.addStory(story2);
-//
-//            context.Projects.AddOrUpdate(project);
+            Story story1 = new Story
+            {
+                id = 1,
+                name = "Make Story",
+                description = "Bla bla bla",
+                actualTime = 0,
+                estimat = 5,
+                isDone = false,
+                createdAt = DateTime.Now
+
+            };
+            Story story2 = new Story
+            {
+                id = 2,
+                name = "Make Tasks",
+                description = "Bla bla bla",
+                actualTime = 0,
+                estimat = 5,
+                isDone = false,
+                createdAt = DateTime.Now
+
+            };
+            context.Stories.AddOrUpdate(s => s.id, story1, story2);
+            context.Tasks.AddOrUpdate(t => t.id, new Taskmodel {id = 1, name = "task1", description = "", estimate = 4, priority = 1, status = 1, story = story1, createdAt = DateTime.Now },
+                new Taskmodel { id = 2, name = "task2", description = "", estimate = 3, priority = 3, status = 1, story = story2, createdAt = DateTime.Now },
+                new Taskmodel { id = 3, name = "task3", description = "", estimate = 5, priority = 5, status = 2, story = story2, createdAt = DateTime.Now },
+                new Taskmodel { id = 4, name = "task4", description = "", estimate = 2, priority = 7, status = 3, story = story2, createdAt = DateTime.Now },
+                new Taskmodel { id = 5, name = "task5", description = "", estimate = 3, priority = 2, status = 4, story = story1, createdAt = DateTime.Now },
+                new Taskmodel { id = 6, name = "task6", description = "", estimate = 7, priority = 1, status = 4, story = story1, createdAt = DateTime.Now });
             
         }
     }
