@@ -1,6 +1,6 @@
 var app = angular.module('myApp');
 
-app.controller('TaskboardController',[ '$scope', function ($scope) {
+app.controller('TaskboardController',['$scope', function ($scope) {
     var self = this; 
     self.tasks = Tasks;
     

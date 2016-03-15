@@ -1,6 +1,6 @@
 var app = angular.module('myApp');
 
-app.controller('StoryController', ['$scope', function ($scope) {
+app.controller('StoryController', ['$scope', 'dataService', function ($scope, dataService) {
     var self = this;
 
     self.stories = stories;
@@ -20,6 +20,11 @@ app.controller('StoryController', ['$scope', function ($scope) {
         $scope.task = null;
     };
 
+    self.getStories = function() {
+        dataService.getStories.then(function(data) {
+            self.stories = data;
+        });
+    };
 
     $scope.handleKeyPress = function(e) {
         var key = e.keyCode || e.which;
@@ -28,6 +33,7 @@ app.controller('StoryController', ['$scope', function ($scope) {
         }
     }
 
+    self.getStories();
 
 }]);
 

@@ -235,6 +235,7 @@
     <Content Include="App\Components\Wall\wall.html" />
     <Content Include="App\Components\Wall\WallController.js" />
     <Content Include="App\Assests\css\stylesheet.css" />
+    <Content Include="App\Shared\DataService.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -1053,7 +1054,6 @@
     <Folder Include="App\Assests\img\" />
     <Folder Include="App\Assests\js\" />
     <Folder Include="App\Assests\libs\" />
-    <Folder Include="App\Shared\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
