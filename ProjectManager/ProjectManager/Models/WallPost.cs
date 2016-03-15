@@ -7,5 +7,6 @@ namespace ProjectManager.Models
 {
     public class WallPost
     {
+        public int id { get; set; }
     }
 }

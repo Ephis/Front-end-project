@@ -24,5 +24,10 @@ namespace ProjectManager.Models
             
         }
 
+        public void addTask(Taskmodel task)
+        {
+            tasks.Add(task);
+        }
+
     }
 }
