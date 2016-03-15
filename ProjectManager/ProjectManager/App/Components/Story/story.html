@@ -40,11 +40,11 @@
                                 <div class="modal-first-column">
                                     <label>Name</label>
                                     <input type="text" class="form-control" name="storyName" max-lenght="30" ng-model="story.name" placeholder="Story name" required/>
-                                    
-                                    <span ng-show="(storyForm.storyName.$dirty || submitted) && storyForm.storyName.$error.required">Name is required</span>
-                                   <!-- <div ng-messages="storyForm.storyName.$error" ng-if="storyForm.storyName.$dirty">
+
+
+                                    <div ng-messages="storyForm.storyName.$error" ng-if="storyForm.storyName.$dirty">
                                         <div ng-message="required">Du mangler at udfylde</div>
-                                    </div> -->
+                                    </div> 
 
 
                                     <br/>
@@ -76,7 +76,7 @@
                         </form>
                     </div>
                     <div class="modal-footer" style="clear: both">
-                        <input type="submit" ng-disabled="!storyForm.$valid" ng-click="storyCtrl.addStory()" value="Create" class="btn btn-primary" data-dismiss="modal" />
+                        <input type="submit" ng-disabled="storyForm.$invalid" ng-click="storyCtrl.addStory()" value="Create" class="btn btn-primary" data-dismiss="modal" />
                     </div>
                 </div>
 
