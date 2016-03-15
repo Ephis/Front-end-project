@@ -33,8 +33,8 @@
         -->
         <div class="card-deck-wrapper">
             <div class="card-deck deck-wrapper-padding">
-                <div class="card" ng-repeat="list in models.lists">
-                    <div class="card-header"></div>
+                <div class="card" ng-repeat="(name, list) in models.lists">
+                    <div class="card-header">{{name}}</div>
                     <ul class="list-group list-group-flush" dnd-list="list">
                         <!-- The dnd-draggable directive makes an element draggable and will
                         transfer the object that was assigned to it. If an element was
