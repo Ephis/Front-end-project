@@ -28,6 +28,7 @@ app.controller('StoryController', ['$scope', function ($scope) {
         }
     }
 
+
 }]);
 
 var user1 = new User(1, "KyhmeBiatchs", "Marck Jensen", "", "Jeg hedder Marck og er 10 år", []);
