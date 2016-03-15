@@ -8,13 +8,13 @@ app.controller('TaskboardController',[ '$scope', function ($scope) {
 
     $scope.models = {
         selected: null,
-        lists: { "A": [], "B": [] }
+        lists: { "ToDo": [], "In progress": [], "Review": [], "Done": [] }
     };
 
     // Generate initial model
     for (var i = 1; i <= 3; ++i) {
-        $scope.models.lists.A.push({ label: "Item A" + i });
-        $scope.models.lists.B.push({ label: "Item B" + i });
+        $scope.models.lists.ToDo.push({ label: "Item A" + i });
+        $scope.models.lists["In progress"].push({ label: "Item B" + i });
     };
 
     // Model to JSON for demo purpose
