@@ -21,10 +21,21 @@ app.controller('StoryController', ['$scope', 'dataService', function ($scope, da
     };
 
     self.getStories = function() {
-        dataService.getStories.then(function(data) {
-            self.stories = data;
+        dataService.getStories().then(function (d) { 
+           self.stories = d.data;
         });
     };
+
+    self.isStoryDone = function (isDone)
+    {
+        var displayText = "";
+        if (isDone) {
+            displayText = "Done";
+        } else {
+            displayText = "ToDo";
+        }
+        return displayText;
+    }
 
     $scope.handleKeyPress = function(e) {
         var key = e.keyCode || e.which;

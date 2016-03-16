@@ -14,7 +14,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{story.description}}</li>
                     <li class="list-group-item">Estimat: {{story.estimat}} | Priority: {{story.priority}}</li>
-                    <li class="list-group-item">Status: {{story.status}}</li>
+                    <li class="list-group-item">Status: {{storyCtrl.isStoryDone(story.isDone)}}</li>
 
                 </ul>
             </div>

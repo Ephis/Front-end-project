@@ -5,19 +5,10 @@ app.service('dataService', ['$http', function ($http) {
     delete $http.defaults.headers.common['X-Requested-With'];
     var url = 'http://localhost:12310/api/';
 
-    var dataService = {
+    return {
         getStories: function () {
-            var promise = $http.get(url + 'stories').then(function(response) {
-                console.log(response);
-
-                return response.data;
-            });
-            return promise;
+            return $http.get(url + 'stories');  //1. this returns promise
         }
-        
-    }
-
-
-    return dataService;
+    };
 
 }]);
