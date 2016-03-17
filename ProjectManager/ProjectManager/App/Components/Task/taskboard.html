@@ -3,36 +3,12 @@
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#taskModal">Create Task</button>
 </header>
 <div>
+    <!--Bootstrap class for responsive-->
     <div class="container" style="padding-top:30px">
 
-
-
-        <!--
         <div class="card-deck-wrapper">
             <div class="card-deck deck-wrapper-padding">
-                <div class="card" style="padding-bottom:50px">
-                    <div class="card-header">
-                        <h4>ToDo</h4>
-                    </div>
-                    <ul class="list-group list-group-flush" dnd-list="list" dnd-draggable="item" dnd-moved="list.splice($index,1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
-                        <li class="list-group-item" ng-repeat="task in taskCtrl.tasks">{{task.name}}</li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4 class="card-header">In Progress</h4>
-                </div>
-                <div class="card">
-                    <h4 class="card-header">Review</h4>
-                </div>
-                <div class="card">
-                    <h4 class="card-header">DONE!</h4>
-                </div>
-            </div>
-        </div>
-        -->
-        <div class="card-deck-wrapper">
-            <div class="card-deck deck-wrapper-padding">
+                <!--Bootstrap card-->
                 <div class="card" ng-repeat="(name, list) in models.lists">
                     <div class="card-header">{{name}}</div>
                     <ul class="list-group list-group-flush" dnd-list="list">
@@ -57,7 +33,6 @@
 
         <!-- Makin modal for task!-->
         <div class="modal fade" id="taskModal" role="dialog" ng-controller="TaskboardController as taskCtrl">
-            <!--Hvad er det her modal-lg-->
             <div class="modal-dialog modal-lg">
                 <!--Modal content-->
                 <div class="modal-content">
