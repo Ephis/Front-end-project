@@ -11,9 +11,8 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
         var task = $scope.task;
         $scope.task = null;
         $scope.models.lists.ToDo.push(task);
+        console.log($scope.models.lists);
     };
-    
-    
 
     $scope.stories = Stories;
 
@@ -28,7 +27,6 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
             self.dndListInit(d.data);
         });
     };
-
 
     self.dndListInit = function(tasks) {
         tasks.forEach(function(task) {

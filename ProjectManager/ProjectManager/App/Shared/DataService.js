@@ -7,7 +7,7 @@ app.service('dataService', ['$http', function ($http) {
 
     return {
         getStories: function() {
-            return $http.get(url + 'stories'); //1. this returns promise
+            return $http.get(url + 'stories'); 
         },
 
         getTasks: function() {

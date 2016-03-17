@@ -3,7 +3,7 @@ var app = angular.module('myApp');
 app.controller('StoryController', ['$scope', 'dataService', function ($scope, dataService) {
     var self = this;
 
-    self.stories = stories;
+    self.stories = [];
     self.tasksToAdd = [];
 
     self.addStory = function () {
@@ -22,7 +22,8 @@ app.controller('StoryController', ['$scope', 'dataService', function ($scope, da
 
     self.getStories = function() {
         dataService.getStories().then(function (d) { 
-           self.stories = d.data;
+            self.stories = d.data;
+            console.log(self.stories);
         });
     };
 
@@ -47,10 +48,3 @@ app.controller('StoryController', ['$scope', 'dataService', function ($scope, da
     self.getStories();
 
 }]);
-
-var user1 = new User(1, "KyhmeBiatchs", "Marck Jensen", "", "Jeg hedder Marck og er 10 år", []);
-var user2 = new User(2, "Ephixs", "Nicolai Rasmussen", "", "Marck er min ven", []);
-
-var project = new Project(1, "Project 1", [], user1, "", []);
-
-var stories = [new Story(1, "Vask Op", "Vask alt opvask op", 2, 10, user1, "", 0, project, []), new Story(2, "Støvsug", "Støvsug over alt", 4, 8, user2, "", 0, project, []), new Story(3, "Støv af", "Støv alt af", 1, 4, user1, "", 0, project, [])];
