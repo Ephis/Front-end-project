@@ -6,8 +6,12 @@ app.service('dataService', ['$http', function ($http) {
     var url = 'http://localhost:12310/api/';
 
     return {
-        getStories: function () {
-            return $http.get(url + 'stories');  //1. this returns promise
+        getStories: function() {
+            return $http.get(url + 'stories'); //1. this returns promise
+        },
+
+        getTasks: function() {
+            return $http.get(url + 'Taskmodels');
         }
     };
 

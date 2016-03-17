@@ -1,6 +1,6 @@
 var app = angular.module('myApp');
 
-app.controller('TaskboardController',['$scope', function ($scope) {
+app.controller('TaskboardController',['$scope', 'dataService', function ($scope, dataService) {
     var self = this; 
     self.tasks = Tasks;
     
@@ -11,16 +11,33 @@ app.controller('TaskboardController',['$scope', function ($scope) {
         lists: { "ToDo": [], "In progress": [], "Review": [], "Done": [] }
     };
 
-    // Generate initial model
-    for (var i = 1; i <= 3; ++i) {
-        $scope.models.lists.ToDo.push({ label: "Item A" + i });
-        $scope.models.lists["In progress"].push({ label: "Item B" + i });
+    self.getStories = function() {
+        dataService.getTasks().then(function(d) {
+            $scope.tasks = d.data;
+            self.dndListInit(d.data);
+        });
     };
 
-    // Model to JSON for demo purpose
-    $scope.$watch('models', function (model) {
-        $scope.modelAsJson = angular.toJson(model, true);
-    }, true);
+    self.dndListInit = function(tasks) {
+        tasks.forEach(function(task) {
+            switch(task.status) {
+                case 0:
+                    $scope.models.lists.ToDo.push(task);
+                    break;
+                case 1:
+                    $scope.models.lists["In progress"].push(task);
+                    break;
+                case 2:
+                    $scope.models.lists.Review.push(task);
+                    break;
+                case 3:
+                    $scope.models.lists.Done.push(task);
+                    break;
+            }
+        });
+    };
+
+    self.getStories();
 
 }]);
 
