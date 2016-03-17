@@ -229,3 +229,24 @@ ul {
 .dropZone {
     height: 50px;
 }
+
+.video-container > video{
+    width: 600px;
+    height:auto;
+}
+.video-container.controls{
+
+}
+.video-container .controls #play{
+    height: 50px;
+    width: 50px;
+    background-color: #FF0000;
+    text-align: center;
+    border-radius: 50%;
+    float: left;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    cursor:pointer;
+}
