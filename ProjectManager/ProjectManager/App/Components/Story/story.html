@@ -34,7 +34,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- form start-->
-                        <form class="css-form" name="storyForm">
+                        <form class="css-form" name="storyForm" novalidate>
                             <div class="form-group">
                                 <!-- Modal right side-->
                                 <div class="modal-first-column">
@@ -52,7 +52,13 @@
                                     <input type="text" class="form-control" ng-model="story.description" placeholder="Description" />
                                     <br/>
                                     <label>Estimat</label>
-                                    <input type="number" class="form-control" min="1" max="100" ng-model="story.estimat" placeholder="Estimat" />
+                                    <input type="number" class="form-control" name="storyEstimat" min="1" max="100" ng-model="story.estimat" placeholder="Estimat"/>
+
+                                    <div ng-messages="storyForm.storyEstimat.$error">
+                                        <div ng-message="min">Mindst 1</div>
+                                        <div ng-message="max">Max 100</div>
+                                    </div>
+
                                     <br/>
                                     <label>Priority</label>
                                     <input type="number" class="form-control" min="1" max="10" ng-model="story.priority" placeholder="Priority" />
