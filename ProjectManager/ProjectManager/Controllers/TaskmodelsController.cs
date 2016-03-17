@@ -76,10 +76,10 @@ namespace ProjectManager.Controllers
         [ResponseType(typeof(Taskmodel))]
         public async Task<IHttpActionResult> PostTaskmodel(TaskViewModel taskmodel)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             Story story = db.Stories.FirstOrDefault(e => e.id == taskmodel.storyId);
             Taskmodel task = new Taskmodel();
             task.story = story;

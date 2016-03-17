@@ -26,7 +26,7 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
         $scope.stories = d.data;
     });;
 
-    self.getStories = function() {
+    self.getTasks = function() {
         dataService.getTasks().then(function(d) {
             self.dndListInit(d.data);
         });
@@ -51,7 +51,7 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
         });
     };
 
-    self.getStories();
+    self.getTasks();
 
 
 
