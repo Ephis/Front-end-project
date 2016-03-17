@@ -1,5 +1,6 @@
 var app = angular.module('myApp');
 
+//self = outer, this = inside
 app.controller('MenuController', function () {
     var self = this;
     self.project = null;
