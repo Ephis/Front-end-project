@@ -3,7 +3,7 @@ var app = angular.module('myApp');
 app.controller('StoryController', ['$scope', 'dataService', function ($scope, dataService) {
     var self = this;
 
-    self.stories = Stories;
+    self.stories = [];
     self.tasksToAdd = [];
 
     self.addStory = function () {
