@@ -61,10 +61,22 @@
 
                                     <br/>
                                     <label>Priority</label>
-                                    <input type="number" class="form-control" min="1" max="10" ng-model="story.priority" placeholder="Priority" />
+                                    <input type="number" class="form-control" name="storyPriority" min="1" max="10" ng-model="story.priority" placeholder="Priority" />
+
+                                    <div ng-messages="storyForm.storyPriority.$error">
+                                        <div ng-message="min">Mindst 1</div>
+                                        <div ng-message="max">Max 10</div>
+                                    </div>
+
                                     <br/>
                                     <label>Actual Time</label>
-                                    <input type="number" class="form-control" min="1" max="100" ng-model="story.actualTime" placeholder="Actual time" />
+                                    <input type="number" class="form-control" name="storyActualTime" min="1" max="100" ng-model="story.actualTime" placeholder="Actual time" />
+
+                                    <div ng-messages="storyForm.storyActualTime.$error">
+                                        <div ng-message="min">Mindst 1</div>
+                                        <div ng-message="max">Max 100</div>
+                                    </div>
+
                                     <br/>
                                 </div>
                                 <!-- modal left side-->
