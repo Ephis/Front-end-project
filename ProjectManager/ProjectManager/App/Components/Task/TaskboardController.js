@@ -12,6 +12,7 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
         var task = $scope.task;
         $scope.task = null;
         $scope.models.lists.ToDo.push(task);
+        console.log($scope.models.lists);
     };
 
     $scope.stories = Stories;
