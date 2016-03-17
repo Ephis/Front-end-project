@@ -12,7 +12,17 @@ app.service('dataService', ['$http', function ($http) {
 
         getTasks: function() {
             return $http.get(url + 'Taskmodels');
+        },
+
+        postStory: function(story, callback) {
+            $http({
+                method: 'POST',
+                url: url + 'Stories',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: $.param(story)
+            }).then(callback);
         }
+
     };
 
 }]);

@@ -3,15 +3,20 @@ var app = angular.module('myApp');
 app.controller('StoryController', ['$scope', 'dataService', function ($scope, dataService) {
     var self = this;
 
-    self.stories = [];
+    self.stories = Stories;
     self.tasksToAdd = [];
 
     self.addStory = function () {
+        $('#myModal').modal('toggle');
         var story = $scope.story;
         $scope.story = null;
         story.taskList = self.tasksToAdd;
         self.tasksToAdd = [];
-        self.stories.push(story);
+        dataService.postStory(story, function(data) {
+            self.stories.push(data.data);
+            console.log(data.data);
+        });
+        console.log(self.stories);
     };
 
     self.addTaskToList = function () {
@@ -21,9 +26,10 @@ app.controller('StoryController', ['$scope', 'dataService', function ($scope, da
     };
 
     self.getStories = function() {
-        dataService.getStories().then(function (d) { 
-            self.stories = d.data;
-            console.log(self.stories);
+        dataService.getStories().then(function (d) {
+            d.data.forEach(function (data) {
+                self.stories.push(data);
+            });
         });
     };
 
@@ -45,6 +51,6 @@ app.controller('StoryController', ['$scope', 'dataService', function ($scope, da
         }
     }
 
-    self.getStories();
+        self.getStories();
 
 }]);
