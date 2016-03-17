@@ -6,12 +6,21 @@
     
         <!--VideoPlayer-->
         <div class="video-container">
-            <video>
-                <source src="https://www.youtube.com/watch?v=9TycLR0TqFA"/>
+            <video id="video1">
+                <source src="mov_bbb.mp4" type="video/mp4"/>
+                <source src="mov_bbb.ogg" type="video/ogg"/>
             </video>
             <div class="controls noselect">
                 <div id="play">&#8250;</div>
             </div>
         </div>
+
+    <div style="margin-left:200px">
+        <p id="demo">Click the button to get your position.</p>
+
+        <button onclick="getLocation()">Try It</button>
+
+        <div id="mapholder"></div>
+    </div>
 
 </div>

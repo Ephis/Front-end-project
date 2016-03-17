@@ -224,6 +224,7 @@
     <Content Include="App\Components\Project\ProjectController.js" />
     <Content Include="App\Components\Project\ProjectCreateModal.html" />
     <Content Include="App\Components\Project\ProjectDirectives.js" />
+    <Content Include="App\Components\Settings\mov_bbb.mp4" />
     <Content Include="App\Components\Settings\settings.html" />
     <Content Include="App\Components\Settings\SettingsController.js" />
     <Content Include="App\Components\Story\story.html" />
@@ -283,6 +284,7 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="App\Components\Settings\mov_bbb.ogg" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
