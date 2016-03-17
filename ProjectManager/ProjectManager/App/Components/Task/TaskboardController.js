@@ -1,9 +1,20 @@
 var app = angular.module('myApp');
 
+
 app.controller('TaskboardController',['$scope', 'dataService', function ($scope, dataService) {
+
     var self = this; 
     self.tasks = Tasks;
+    self.task = [];
+
+    self.addTask = function () {
+        var task = $scope.task;
+        $scope.task = null;
+        $scope.models.lists.ToDo.push(task);
+    };
     
+    
+
     $scope.stories = Stories;
 
     $scope.models = {
@@ -17,6 +28,7 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
             self.dndListInit(d.data);
         });
     };
+
 
     self.dndListInit = function(tasks) {
         tasks.forEach(function(task) {
@@ -38,6 +50,8 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
     };
 
     self.getStories();
+
+
 
 }]);
 
