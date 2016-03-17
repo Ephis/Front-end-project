@@ -8,12 +8,12 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
     self.task = [];
 
     self.addTask = function () {
+        $('#taskModal').modal('toggle');
         var task = $scope.task;
         $scope.task = null;
         $scope.models.lists.ToDo.push(task);
+        console.log($scope.models.lists);
     };
-    
-    
 
     $scope.stories = Stories;
 
@@ -28,7 +28,6 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
             self.dndListInit(d.data);
         });
     };
-
 
     self.dndListInit = function(tasks) {
         tasks.forEach(function(task) {
@@ -57,4 +56,4 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
 
 var Tasks = [new Task(1, "Task 1", "desc", 2, "", "uswr1", "story"), new Task(2, "Task 2", "desc", 2, "", "uswr1", "story"),new Task(3, "Task 3", "desc", 2, "", "uswr1", "story")];
 
-var Stories = [new Story(1, "Vask Op", "Vask alt opvask op", 2, 10, user1, "", 0, project, []), new Story(2, "Støvsug", "Støvsug over alt", 4, 8, user2, "", 0, project, []), new Story(3, "Støv af", "Støv alt af", 1, 4, user1, "", 0, project, [])];
+var Stories = [new Story(1, "Vask Op", "Vask alt opvask op", 2, 10, "", "", 0, "", []), new Story(2, "Støvsug", "Støvsug over alt", 4, 8, "", "", 0, "", []), new Story(3, "Støv af", "Støv alt af", 1, 4, "", "", 0, "", [])];

@@ -7,12 +7,22 @@ app.service('dataService', ['$http', function ($http) {
 
     return {
         getStories: function() {
-            return $http.get(url + 'stories'); //1. this returns promise
+            return $http.get(url + 'stories'); 
         },
 
         getTasks: function() {
             return $http.get(url + 'Taskmodels');
+        },
+
+        postStory: function(story, callback) {
+            $http({
+                method: 'POST',
+                url: url + 'Stories',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: $.param(story)
+            }).then(callback);
         }
+
     };
 
 }]);

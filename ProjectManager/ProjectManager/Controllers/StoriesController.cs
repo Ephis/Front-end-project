@@ -80,6 +80,8 @@ namespace ProjectManager.Controllers
                 return BadRequest(ModelState);
             }
 
+            story.createdAt = DateTime.Now;
+
             db.Stories.Add(story);
             await db.SaveChangesAsync();
 
