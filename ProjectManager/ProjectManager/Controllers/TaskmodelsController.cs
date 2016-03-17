@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ProjectManager.Models;
+using ProjectManager.Models.ViewModels;
 
 namespace ProjectManager.Controllers
 {
@@ -73,17 +74,25 @@ namespace ProjectManager.Controllers
 
         // POST: api/Taskmodels
         [ResponseType(typeof(Taskmodel))]
-        public async Task<IHttpActionResult> PostTaskmodel(Taskmodel taskmodel)
+        public async Task<IHttpActionResult> PostTaskmodel(TaskViewModel taskmodel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Tasks.Add(taskmodel);
+            Story story = db.Stories.FirstOrDefault(e => e.id == taskmodel.storyId);
+            Taskmodel task = new Taskmodel();
+            task.story = story;
+            task.name = taskmodel.name;
+            task.description = taskmodel.description;
+            task.priority = taskmodel.priority;
+            task.estimate = taskmodel.estimate;
+            task.status = taskmodel.status;
+            task.createdAt = DateTime.Now;
+            db.Tasks.Add(task);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = taskmodel.id }, taskmodel);
+            return CreatedAtRoute("DefaultApi", new { id = task.id }, task);
         }
 
         // DELETE: api/Taskmodels/5

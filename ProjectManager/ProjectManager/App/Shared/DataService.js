@@ -21,6 +21,17 @@ app.service('dataService', ['$http', function ($http) {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: $.param(story)
             }).then(callback);
+        },
+
+        postTask: function (task, callback) {
+            var data = { 'name': task.name, 'description': task.description, 'estimate': task.estimate, 'priority': task.priority, 'stauts': 0, 'storyId': task.story.id}
+
+            $http({
+                method: 'POST',
+                url: url + 'Taskmodels',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                data: $.param(data)
+            }).then(callback);
         }
 
     };

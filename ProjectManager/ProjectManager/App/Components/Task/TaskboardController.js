@@ -4,27 +4,30 @@ var app = angular.module('myApp');
 app.controller('TaskboardController',['$scope', 'dataService', function ($scope, dataService) {
 
     var self = this; 
-    self.tasks = Tasks;
-    self.task = [];
-
-    self.addTask = function () {
-        $('#taskModal').modal('toggle');
-        var task = $scope.task;
-        $scope.task = null;
-        $scope.models.lists.ToDo.push(task);
-        console.log($scope.models.lists);
-    };
-
-    $scope.stories = Stories;
+  
 
     $scope.models = {
         selected: null,
         lists: { "ToDo": [], "In progress": [], "Review": [], "Done": [] }
     };
 
+
+    self.addTask = function () {
+        $('#taskModal').modal('toggle');
+        var task = $scope.task;
+        $scope.task = null;
+        dataService.postTask(task, function(data) {
+            console.log(data.data);
+            $scope.models.lists.ToDo.push(data.data);
+        })
+    };
+
+    dataService.getStories().then(function (d) {
+        $scope.stories = d.data;
+    });;
+
     self.getStories = function() {
         dataService.getTasks().then(function(d) {
-            $scope.tasks = d.data;
             self.dndListInit(d.data);
         });
     };
