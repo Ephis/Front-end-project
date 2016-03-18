@@ -7,6 +7,7 @@ namespace ProjectManager.Models.ViewModels
 {
     public class TaskViewModel
     {
+        public int id { get; set; }
         public String name { get; set; }
         public String description { get; set; }
         public int status { get; set; }

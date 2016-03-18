@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -21,7 +22,9 @@ namespace ProjectManager.Controllers
         // GET: api/Taskmodels
         public IQueryable<Taskmodel> GetTasks()
         {
-            return db.Tasks;
+            IQueryable<Taskmodel> query = db.Tasks.Include(t => t.story);
+
+            return query; 
         }
 
         // GET: api/Taskmodels/5
@@ -39,7 +42,7 @@ namespace ProjectManager.Controllers
 
         // PUT: api/Taskmodels/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutTaskmodel(int id, Taskmodel taskmodel)
+        public async Task<IHttpActionResult> PutTaskmodel(int id, TaskViewModel taskmodel)
         {
             if (!ModelState.IsValid)
             {
@@ -50,9 +53,15 @@ namespace ProjectManager.Controllers
             {
                 return BadRequest();
             }
-
-            db.Entry(taskmodel).State = EntityState.Modified;
-
+            Story story = db.Stories.FirstOrDefault(e => e.id == taskmodel.storyId);
+            Taskmodel task = new Taskmodel();
+            task.story = story;
+            task.name = taskmodel.name;
+            task.description = taskmodel.description;
+            task.priority = taskmodel.priority;
+            task.estimate = taskmodel.estimate;
+            task.status = taskmodel.status;
+            db.Entry(task).State = EntityState.Modified;
             try
             {
                 await db.SaveChangesAsync();

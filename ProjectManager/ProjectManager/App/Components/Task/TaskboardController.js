@@ -22,6 +22,29 @@ app.controller('TaskboardController',['$scope', 'dataService', function ($scope,
         })
     };
 
+    self.itemDroped = function(item, listName, lastList) {
+        switch (listName) {
+            case "ToDo":
+                item.status = 0;
+                break;
+            case "In progress":
+                item.status = 1;
+                break;
+            case "Review":
+                item.status = 2;
+                break;
+            case "Done":
+                item.status = 3;
+                break;
+            default:
+                break;
+        }
+        console.log(item);
+        dataService.putTask(item, function(d) {
+            console.log(d);
+        });
+    }
+
     dataService.getStories().then(function (d) {
         $scope.stories = d.data;
     });;

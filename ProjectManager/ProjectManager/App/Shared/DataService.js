@@ -2,7 +2,6 @@
 
 app.service('dataService', ['$http', function ($http) {
     var self = this;
-    delete $http.defaults.headers.common['X-Requested-With'];
     var url = 'http://localhost:12310/api/';
 
     return {
@@ -29,6 +28,17 @@ app.service('dataService', ['$http', function ($http) {
             $http({
                 method: 'POST',
                 url: url + 'Taskmodels',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                data: $.param(data)
+            }).then(callback);
+        },
+
+        putTask: function (task, callback) {
+            var data = {'id': task.id, 'name': task.name, 'description': task.description, 'estimate': task.estimate, 'priority': task.priority, 'stauts': 0, 'storyId': task.story.id }
+
+            $http({
+                method: 'PUT',
+                url: url + 'Taskmodels/' + task.id,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 data: $.param(data)
             }).then(callback);
